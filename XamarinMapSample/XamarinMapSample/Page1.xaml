@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinMapSample.Page1">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     Spacing="0">
+            <StackLayout VerticalOptions="StartAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       Spacing="10"
+                       Margin="20">
+                <Label x:Name="lblName" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="lblAddress" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <ContentView HeightRequest="1" BackgroundColor="White" />
+            <ContentView HeightRequest="50">
+                <Button Text="Done"
+                      BorderRadius="0" Clicked="Button_Clicked"
+                      />
+            </ContentView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+              xmlns:viewModels="clr-namespace:XamarinMapSample.ViewModels"
+             x:Class="XamarinMapSample.Views.PinPages" >
+    <ContentPage.BindingContext>
+        <viewModels:PinsPageViewModel/>
+    </ContentPage.BindingContext>
+    
+    <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+        <StackLayout  Orientation="Horizontal"
+                       >
+            <Label x:Name="lblName" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Text="Map Page" Font="22" TextColor="White" />
+              </StackLayout>
+        <StackLayout  Orientation="Horizontal">
+            <!-- Search Bar -->
+            <SearchBar x:Name="SearchControl" HorizontalOptions="FillAndExpand"  SearchButtonPressed="SearchControl_SearchButtonPressed"
+                     Placeholder="Search location"
+                     TextColor="White" />
+        </StackLayout>
+        <!--<StackLayout Orientation="Horizontal">
+            <Entry x:Name="searchQueryEntry" Placeholder="Enter place to search" 
+                HorizontalOptions="FillAndExpand"></Entry>
+            <Button Text="Search" Image="" x:Name="btnSeach" Clicked="btnSeach_Clicked" ></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Label:"/>
+            <Label Text="{Binding Pin.Label}" x:Name="lblName"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Latitude:" />
+            <Label Text="{Binding Pin.Position.Latitude}" x:Name="lblLat" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Longitude:" />
+            <Label Text="{Binding Pin.Position.Longitude}" x:Name="lblLog"/>
+        </StackLayout>-->
+        <StackLayout Orientation="Horizontal" IsVisible="False">
+            <Label Text="IsDraggable:" Font="10"/>
+            <Switch IsToggled="{Binding Pin.IsDraggable}" Opacity="0.5"/>
+            
+        </StackLayout>
+        <!--<StackLayout Orientation="Horizontal">
+            <Button x:Name="btnRemovePin" Text="RemovePin" Clicked="btnRemovePin_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="btnGetLocation" Text="GetLocation" Clicked="btnGetLocation_Clicked" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+        </StackLayout>-->
+        <googleMaps:Map VerticalOptions="FillAndExpand" x:Name="googlemapp">
+            <googleMaps:Map.Behaviors>
+                <!--<bindings:MapClickedToCommandBehavior Command="{Binding MapClickedCommand}" />-->
+                <bindings:BindingPinsBehavior Value="{Binding Pins}"/>
+                <bindings:PinClickedToCommandBehavior Command="{Binding PinClickedCommand}"/>
+                <bindings:SelectedPinChangedToCommandBehavior Command="{Binding SelectedPinChangedCommand}"/>
+                <bindings:InfoWindowClickedToCommandBehavior Command="{Binding InfoWindowClickedCommand}"/>
+                <bindings:InfoWindowLongClickedToCommandBehavior Command="{Binding InfoWindowLongClickedCommand}"/>
+                <bindings:PinDragStartToCommandBehavior Command="{Binding PinDragStartCommand}"/>
+                <bindings:PinDraggingToCommandBehavior Command="{Binding PinDraggingCommand}"/>
+                <bindings:PinDragEndToCommandBehavior Command="{Binding PinDragEndCommand}"/>
+            </googleMaps:Map.Behaviors>
+        </googleMaps:Map>
+    </StackLayout>
+</ContentPage>
